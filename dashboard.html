@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="favicon.ico">
+
+		<title>Dashboard Template for Bootstrap</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="css/dashboard.css" rel="stylesheet">
+
+		<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+		<script src="js/ie-emulation-modes-warning.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+						aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Project name</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Dashboard</a></li>
+						<li><a href="#">Settings</a></li>
+						<li><a href="#">Profile</a></li>
+						<li><a href="#">Help</a></li>
+					</ul>
+					<form class="navbar-form navbar-right">
+						<input type="text" class="form-control" placeholder="Search...">
+					</form>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+						<li><a href="user.html" target="body" id="user">用户管理</a></li>
+						<li><a href="#">订单管理</a></li>
+						<li><a href="#">商品管理</a></li>
+					</ul>
+
+				</div>
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+								aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="exampleModalLabel">添加用户</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="username" class="control-label">用户姓名:</label>
+								<input type="text" class="form-control" id="username">
+							</div>
+							<div class="form-group">
+								<label for="useremail" class="control-label">用户邮箱:</label>
+								<input type="text" class="form-control" id="useremail">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">退出</button>
+						<button type="button" class="btn btn-primary" id="save">确认</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+								aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="exampleModalLabel">修改用户信息</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="username" class="control-label ">新的用户姓名(置空表示不修改此项):</label>
+								<input type="text" class="form-control new_name">
+							</div>
+							<div class="form-group">
+								<label for="useremail" class="control-label">新的用户邮箱(置空表示不修改此项):</label>
+								<input type="text" class="form-control new_email">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">退出</button>
+						<button type="button" class="btn btn-primary" id="save_new">确认</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+								aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="exampleModalLabel">查询用户</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="username" class="control-label">您将按什么属性来查找此用户(id、姓名、邮箱):</label>
+								<input type="text" class="form-control" id="limit">
+							</div>
+							<div class="form-group">
+								<label for="username" class="control-label ">请输入(id、姓名、邮箱):</label>
+								<input type="text" class="form-control" id="key">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">退出</button>
+						<button type="button" class="btn btn-primary select">确认</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+								aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="gridSystemModalLabel">删除用户</h4>
+					</div>
+					<div class="modal-body">
+						确认删除此用户？
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">否</button>
+						<button type="button" class="btn btn-primary confirm">是</button>
+					</div>
+					<!-- Bootstrap core JavaScript
+    ================================================== -->
+					<!-- Placed at the end of the document so the pages load faster -->
+					<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+						integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+						crossorigin="anonymous">
+					</script>
+					<script>
+						window.jQuery || document.write('<script src="js/jquery-3.6.0.js"><\/script>')
+					</script>
+					<script src="js/bootstrap.min.js"></script>
+					<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+					<script src="js/holder.min.js"></script>
+					<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+					<script src="js/ie10-viewport-bug-workaround.js"></script>
+					<script src="js/mock.js"></script>
+					<script src="js/server.js"></script>
+					<script type="text/javascript">
+						//增
+						$('#save').click(function() {
+							const user = {
+								name: $('#username').val(),
+								email: $('#useremail').val()
+							}
+							$.ajax({
+								url: '/saveUser',
+								type: 'POST',
+								data: JSON.stringify(user),
+								dataType: 'json',
+								success(res) {
+									$("#exampleModal").modal('hide');
+									$('#user').click();
+									alert("用户添加成功!");
+								},
+								error(xhr, info, err) {}
+							})
+						})
+						//排序函数
+						function sortBy(props) {
+							return function(a, b) {
+								return a[props] - b[props];
+							}
+						}
+
+						//用户列表
+						$('#user').click(function(e) {
+							e.preventDefault();
+							$.ajax({
+								url: '/getUserList',
+								type: 'get',
+								dataType: 'json',
+								success(res) {
+									res.sort(sortBy("id"));
+									if (res[0] == null) {
+										let table = `<h2 class="sub-header">用户管理</h2><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">添加用户</button><button type="button" class="btn btn-primary col-lg-offset-10" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">查询用户</button>
+											<table class="table table-striped">
+												<thead>
+													<tr>
+													<th>ID</th>
+													<th>姓名</th>
+													<th>邮箱</th>
+													<th>操作</th>
+													<th>操作</th>
+													</tr>
+												</thead>
+												<tbody></tbody>`;
+										$(".col-sm-9").empty();
+										$(".col-sm-9").append(table);
+										$("#exampleModal2").modal('hide');
+									} else {
+										res.sort(sortBy("id"));
+										let tablehead = `<h2 class="sub-header">用户管理</h2><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">添加用户</button><button type="button" class="btn btn-primary col-lg-offset-10" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">查询用户</button>
+											<table class="table table-striped">
+												<thead>
+													<tr>
+													<th>ID</th>
+													<th>姓名</th>
+													<th>邮箱</th>
+													<th>操作</th>
+													<th>操作</th>
+													</tr>
+												</thead>`;
+										let pages = `<nav aria-label="Page navigation">
+													  <ul class="pagination">
+														<li>
+														  <a href="#" aria-label="Previous" class = "pre">
+															<span aria-hidden="true">上一页</span>
+														  </a>
+														  <a href="#" aria-label="Next" class = "next">
+															<span aria-hidden="true">下一页</span>
+														  </a>
+														</li>
+													  </ul>
+													</nav>`;
+										let tablefoot = `</tbody></table>`;
+										let tablebody = `<tbody>`;
+										res.forEach(function(values) {
+											let tr = `<tr>
+											<td>${values.id}</td>
+											<td>${values.name}</td>
+											<td>${values.email}</td>
+											<td><button type="button" class="btn btn-primary update_user" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">修改用户</button></td>
+											<td><button type="button" class="btn btn-danger">删除用户</button></td>
+									      </tr>`;
+											tablebody = tablebody + tr;
+										})
+										let table = tablehead + tablebody + tablefoot + pages;
+										// console.log(table);
+										$(".col-sm-9").empty();
+										$(".col-sm-9").append(table);
+										$("#exampleModal2").modal('hide');
+									}
+								}
+							})
+						})
+
+						//删
+						$(document).on("click", ".btn-danger", function() {
+							// console.log($(this).parent().siblings()[0].innerHTML);
+							let a = $(this).parent().siblings()[0].innerHTML;
+							let id = {
+								index: a
+							};
+							$(document).off("click", ".confirm");
+							// console.log(id);
+							$("#delModal").modal('show');
+							$(document).on("click", ".confirm", function() {
+								$.ajax({
+									url: '/removeUser',
+									type: 'post',
+									data: JSON.stringify(id),
+									dataType: 'json',
+									success(res) {
+										$("#delModal").modal('hide');
+										$('#user').click();
+										// alert("删除用户成功！");
+									}
+								})
+							})
+						})
+						//改
+						$(document).on("click", ".update_user", function() {
+							const a = $(this).parent().siblings()[0].innerHTML;
+							$(document).off("click", "#save_new");
+							$(document).on("click", "#save_new", function() {
+								// console.log(a);
+								let new_name = $('.new_name').val();
+								let new_email = $('.new_email').val();
+								// console.log(new_name);
+								let update = {
+									index: a,
+									n_name: new_name,
+									n_email: new_email
+								};
+								// console.log(update);
+								$.ajax({
+									url: '/update_user',
+									type: 'post',
+									data: JSON.stringify(update),
+									dataType: 'json',
+									success(res) {
+										$("#exampleModal1").modal('hide');
+										$('#user').click();
+										// alert("更新用户成功！");
+									}
+								})
+							})
+						})
+						//查
+						$(document).on("click", ".select", function() {
+							const select_user = {
+								limit: $('#limit').val(),
+								key: $('#key').val()
+							}
+							// console.log(select_user);
+							$.ajax({
+								url: '/select_user',
+								type: 'POST',
+								data: JSON.stringify(select_user),
+								dataType: 'json',
+								success(res) {
+									// console.log(res);
+									if (res[0] == null) {
+										let table = `<h2 class="sub-header">用户管理</h2><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">添加用户</button><button type="button" class="btn btn-primary col-lg-offset-10" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">查询用户</button>
+											<table class="table table-striped">
+												<thead>
+													<tr>
+													<th>ID</th>
+													<th>姓名</th>
+													<th>邮箱</th>
+													<th>操作</th>
+													<th>操作</th>
+													</tr>
+												</thead>
+												<tbody></tbody>`;
+										$(".col-sm-9").empty();
+										$(".col-sm-9").append(table);
+										alert("未查询到相关数据！");
+										$("#exampleModal2").modal('hide');
+									} else {
+										res.sort(sortBy("id"));
+										let tablehead = `<h2 class="sub-header">用户管理</h2><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">添加用户</button><button type="button" class="btn btn-primary col-lg-offset-10" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">查询用户</button>
+											<table class="table table-striped">
+												<thead>
+													<tr>
+													<th>ID</th>
+													<th>姓名</th>
+													<th>邮箱</th>
+													<th>操作</th>
+													<th>操作</th>
+													</tr>
+												</thead>`;
+										let pages = `<nav aria-label="Page navigation">
+													  <ul class="pagination">
+														<li>
+														  <a href="#" aria-label="Previous" class = "pre">
+															<span aria-hidden="true">上一页</span>
+														  </a>
+														  <a href="#" aria-label="Next" class = "next">
+															<span aria-hidden="true">下一页</span>
+														  </a>
+														</li>
+													  </ul>
+													</nav>`;
+										let tablefoot = `</tbody></table>`;
+										let tablebody = `<tbody>`;
+										res.forEach(function(values) {
+											let tr = `<tr>
+											<td>${values.id}</td>
+											<td>${values.name}</td>
+											<td>${values.email}</td>
+											<td><button type="button" class="btn btn-primary update_user" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">修改用户</button></td>
+											<td><button type="button" class="btn btn-danger">删除用户</button></td>
+							              </tr>`;
+											tablebody = tablebody + tr;
+										})
+										let table = tablehead + tablebody + tablefoot + pages;
+										// console.log(table);
+										$(".col-sm-9").empty();
+										$(".col-sm-9").append(table);
+										$("#exampleModal2").modal('hide');
+										// alert("查询用户成功！");
+									}
+								}
+							})
+						})
+						$(document).on("click", ".pre", function() {
+							$.ajax({
+								url: '/pre_userlist',
+								type: 'get',
+								dataType: 'json',
+								success(res){
+									$('#user').click();
+								}
+							})
+						})
+						$(document).on("click", ".next", function() {
+							$.ajax({
+								url: '/next_userlist',
+								type: 'get',
+								dataType: 'json',
+								success(res){
+									$('#user').click();
+								}
+							})
+						})
+						$('#user').click();
+					</script>
+	</body>
+</html>

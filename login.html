@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/jquery-3.1.1.js"></script> <!-- jquery-validation对jquery版本似乎有要求。 -->
+		<script src="js/mock.js"></script>
+		<link href="css/bootstrap.css" rel="stylesheet" />
+		<link href="css/offcanvas.css" />
+		<title></title>
+		<script src="js/server.js"></script>
+		<script src="js/offcanvas.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery.validate.js"></script>
+	</head>
+	<body>
+		<form class="col-lg-3 col-lg-push-4">
+			<h2>用户登录</h2><!-- 邮箱：admin@163.com --><!-- 密码：123 -->
+			<div class="form-group">
+				<label class="sr-only" for="exampleInputEmail3">Email address</label>
+				<input type="email" class="form-control" id="exampleInputEmail3" placeholder="邮箱" name="email">   
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="exampleInputPassword3">Password</label>
+				<input type="password" class="form-control" id="exampleInputPassword3" placeholder="密码" name="password"> 
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"> 记住我
+				</label>
+			</div>
+			<button type="button" class="btn btn-primary btn-block">登录</button>
+		</form>
+		<script type="text/javascript">
+			$().ready(function() {
+				$(".col-lg-3").validate({
+					rules: { //验证规则
+						email: {
+							required: true,
+							email: true
+						},
+						password: {
+							required: true,
+							minlength: 3,
+							maxlength: 12
+						}
+					},
+					messages: { //提示信息
+						email: {
+							required: "请输入邮箱地址",
+							email: "请输入正确的邮箱地址"
+						},
+						password: {
+							required: "请输入您的密码",
+							minlength: "密码长度不得小于{0}位",
+							maxlength: "密码长度不得大于{0}位"
+						}
+					}
+				})
+			})
+			$("button").click(function() {
+				const user = {
+					email: $('#exampleInputEmail3').val(),
+					password: $('#exampleInputPassword3').val()
+				}
+				// console.log(user);
+				let data1 = JSON.stringify(user);
+				// console.log(data1);
+				// let data2 = JSON.parse(data1);
+				// console.log(data2);
+				$.ajax({
+					url: '/login',
+					type: 'post',
+					dataType: 'JSON',
+					data: data1,
+					success: function(data) {
+						if (data.code == 200) {
+							console.log(data);
+							location.href = "dashboard.html";
+						} else {
+							// let data1 = JSON.parse(data);
+							console.log(data);
+							let error = `<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+							               <span id="inputError2Status" class="sr-only">(error)</span>`;
+							$('.form-group').addClass("has-error has-feedback").append(error);
+						}
+					},
+					error: function() {
+						console.log("error");
+					}
+				})
+			})
+		</script>
+	</body>
+</html>
